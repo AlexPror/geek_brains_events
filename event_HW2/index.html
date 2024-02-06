@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event_HW2</title>
+    <style>
+      .error {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="from" type="text" />
+    В инпуте написано: <span></span>
+
+    <br />
+
+    <button class="messageBtn">Показать блок</button>
+    <div class="message">Привет :)</div>
+
+    <br />
+
+    <form class="form">
+      <label>
+        Первый инпут:
+        <input class="form-control" type="text" name="control" />
+      </label>
+      <br />
+      <br />
+      <label>
+        Второй инпут:
+        <select class="form-control" name="control">
+          <option value=""></option>
+          <option value="1">Один</option>
+          <option value="2">Два</option>
+        </select>
+      </label>
+      <br />
+      <br />
+      <button type="submit">Отправить</button>
+      <div class="message"></div>
+    </form>
+
+    <script>
+      "use strict";
+      // 1. При изменении значения в input с id="from", значение содержащееся в нем должно моментально отображаться в span. То есть при печати в input'е тег span также должен меняться.
+
+      // 2. При клике на кнопку с классом messageBtn необходимо элементу с классом message:
+      // - добавить два класса: animate_animated и animate_fadeInLeftBig
+      // - поставить данному элементу стиль visibility в значение 'visible'.
+
+      // 3. Необходимо при отправке формы проверить, заполнены ли все поля в этой форме. Если какое-либо поле не заполнено, форма не должна отправляться, также должны быть подсвечены незаполненные поля (необходимо поставить класс error незаполненным полям). Как только пользователь начинает заполнять какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
+      // - Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
+      // - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
+
+      // Задача 1.
+      const inputFrom = document.querySelector("#from");
+      const enterText = document.querySelector("span");
+      inputFrom.addEventListener("input", function () {
+        enterText.textContent = inputFrom.value;
+      });
+
+      // Задача 2.
+      const messageBtn = document.querySelector(".messageBtn");
+      const message = document.querySelector(".message");
+      message.style.visibility = "hidden";
+      function addAnimatedClasses() {
+        message.classList.add("animate_animated", "animate_fadeInLeftBig");
+        message.style.visibility = "visible";
+      }
+      messageBtn.addEventListener("click", addAnimatedClasses);
+
+      // Задача 3.
+      const formEl = document.querySelector(".form");
+      const inputEl = formEl.querySelector("input");
+      const selectEl = formEl.querySelector("select");
+      formEl.addEventListener("submit", function () {
+        event.preventDefault();
+        const inputValue = inputEl.value;
+        const selectValue = selectEl.value;
+        !inputValue.trim()
+          ? inputEl.classList.add("error")
+          : inputEl.classList.remove("error");
+        !selectValue.trim()
+          ? selectEl.classList.add("error")
+          : selectEl.classList.remove("error");
+      });
+    </script>
+  </body>
+</html>

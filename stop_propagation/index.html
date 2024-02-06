@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop propagation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-style: Arial sans serif;
+        font-size: 40px;
+        color: rgb(233, 17, 17);
+        height: 100%;
+        background: hsl(193, 93%, 48%);
+        padding: 10px;
+      }
+
+      body {
+        height: 100%;
+        background: hsl(193, 84%, 59%);
+        padding: 20px;
+      }
+
+      .container {
+        height: 100%;
+        padding: 20px;
+        background: hsl(193, 89%, 68%);
+      }
+
+      ul {
+        height: 100%;
+        padding: 20px;
+        background: hsl(193, 80%, 73%);
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background: hsl(192, 66%, 83%);
+        list-style-type: none;
+      }
+
+      .highlight {
+        background: rgb(216, 75, 75);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul>
+        <li>Нажмите сюда, чтобы увидеть погружение и всплытие события</li>
+      </ul>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
